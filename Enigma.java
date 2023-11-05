@@ -11,10 +11,11 @@ public class Enigma {
     static String terminationCharacter = "quit";
 
     public static void initialRotation(Rotor wheel1, Rotor wheel2, Rotor wheel3) {
+        boolean doubleStep = wheel2.isDoubleStep();
         wheel3.rotate();
-        if (wheel3.isAtNotchPos()) {
+        if (wheel3.isAtNotchPos() || doubleStep) {
             wheel2.rotate();
-            if (wheel2.isAtNotchPos()) {
+            if (wheel2.isAtNotchPos() || doubleStep) {
                 wheel1.rotate();
             }
         }
@@ -83,6 +84,8 @@ public class Enigma {
             char targetLetter = Character.toUpperCase(input2.charAt(0));
 
             plugboard.setNewConnection(requestedLetter, targetLetter);
+            System.out.println(requestedLetter + " is now mapped to " + targetLetter);
+            System.out.println("-----------------------------------------------");
 
         }
 

@@ -19,6 +19,10 @@ public class Rotor {
         return (offset == type.getNotchIndex());
     }
 
+    public boolean isDoubleStep() {
+        return (offset == (type.getNotchIndex() - 1));
+    }
+
     public void rotate() {
         int firstNum = rotorOrder[0];
         for (int i = 0; i < rotorOrder.length - 1; i++) {
